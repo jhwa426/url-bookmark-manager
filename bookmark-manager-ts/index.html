@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Bookmark Manager</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Overview Page -->
+        <section id="overview-page">
+            <h1>URL Bookmark Manager</h1>
+
+            <!-- Add New Link Form -->
+            <form id="bookmark-form">
+                <input type="url" id="bookmark-url" placeholder="Enter bookmark URL" required>
+                <button type="submit" class="add-btn">
+                    <i class="fas fa-bookmark"></i>
+                </button>
+
+                <!-- Optional - Reset Button -->
+                <button type="button" id="reset-btn" class="reset-btn">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </form>
+
+            <!-- Error Message -->
+            <p id="error-message" class="hidden"></p>
+
+            <!-- Links List -->
+            <ul id="bookmark-list"></ul>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination"></div>
+        </section>
+
+        <!-- Results Page -->
+        <section id="results-page" class="hidden">
+            <div>
+                <h1>Thank you for your submission!</h1>
+                <p id="submitted-url"></p>
+                <a href="#" id="back-to-overview">Back to Overview</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Link JavaScript files -->
+    <!-- <script src="app.js"></script> -->
+
+
+    <!-- Link TypeScript files that compiles to JavaScript file-->
+    <script src="dist/page.js"></script>
+</body>
+
+</html>

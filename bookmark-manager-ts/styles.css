@@ -1,0 +1,261 @@
+/* Global CSS variables for colors, ensuring consistent theme throughout the application */
+:root {
+    --background: #374151;
+    /* Dark background color */
+    --text: #111111;
+    /* Primary text color */
+    --purple: #828dff;
+    /* Light purple for accent elements */
+    --primary: #854ce6;
+    /* Primary brand color used for buttons, links */
+    --secondary: #be1adb;
+    /* Secondary color for gradients and hover states */
+    --bookmark: #7c93c3;
+    /* Color for bookmarks background */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--secondary);
+    background-image: linear-gradient(to right, var(--secondary), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Style for the "Add Bookmark" button */
+button.add-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: 4px;
+}
+
+button.add-btn:hover {
+    background-color: var(--secondary);
+    /* Provide a hover effect for better UX */
+}
+
+/* Style for the "Reset Bookmark" button */
+button.reset-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+    background-color: var(--primary);
+    color: #fff;
+}
+
+button.reset-btn:hover {
+    background-color: var(--secondary);
+    /* Similar hover effect for consistency */
+}
+
+/* Style for the "Edit" button */
+button.edit-btn {
+    background-color: #e1d7b7;
+    /* Neutral color for edit actions */
+    color: #000;
+    padding: 5px 10px;
+}
+
+button.edit-btn:hover {
+    background-color: #ffc107;
+    /* Hover state for better interactivity */
+}
+
+/* Style for the "Delete" button */
+button.delete-btn {
+    background-color: #dc3545;
+    /* Red for delete actions to indicate danger */
+    color: #fff;
+}
+
+button.delete-btn:hover {
+    background-color: #72020d;
+    /* Darker red on hover for better visual feedback */
+}
+
+/* Style for each list item in the bookmark list */
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* Styling the anchor tags inside list items */
+li a {
+    flex-grow: 1;
+    text-decoration: none;
+    color: var(--text);
+    /* Ensuring text color consistency */
+}
+
+#bookmark-list {
+    list-style-type: none;
+    /* Removing default bullet points */
+    padding: 0;
+}
+
+#bookmark-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    margin-bottom: 11px;
+    border-radius: 10px;
+    background-color: var(--bookmark);
+    /* Background color for bookmarks */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Error message styles to clearly indicate issues to the user */
+#error-message {
+    color: #dc3545;
+    /* Red color to grab attention */
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: none;
+    /* Hidden by default */
+    font-weight: bold;
+}
+
+#error-message::before {
+    content: "⚠ ";
+    /* Add a warning symbol before the message */
+    font-size: 1.2em;
+}
+
+.hidden {
+    display: none;
+    /* Utility class for hiding elements */
+}
+
+#results-page {
+    padding: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Shadow for card-like appearance */
+}
+
+#results-page h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#submitted-url {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--bookmark);
+    font-weight: bold;
+}
+
+#back-to-overview {
+    margin-top: 20px;
+    display: inline-block;
+    background-color: var(--primary);
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+#back-to-overview:hover {
+    background-color: var(--secondary);
+    /* Hover effect for better interactivity */
+}
+
+/* Responsive design for larger screens */
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+        /* Restrict width on larger devices */
+    }
+
+    form {
+        flex-direction: row;
+    }
+
+    input {
+        width: 80%;
+        /* Make input wider on larger screens */
+    }
+
+    button {
+        width: auto;
+    }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    li {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    li a {
+        word-break: break-word;
+        /* Ensure long URLs break properly on small screens */
+        font-size: 12px;
+    }
+
+    li button {
+        width: 100px;
+        /* Adjust button size for small screens */
+    }
+
+    li .edit-btn,
+    li .delete-btn {
+        width: auto;
+        margin-bottom: 10px;
+    }
+}
