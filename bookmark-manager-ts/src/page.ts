@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const backToOverview = document.getElementById("back-to-overview") as HTMLElement; // Back to overview element
 
     let urlBookmarks: string[] = []; // An array of URL bookmarks
-    let currentPage = 1; // Start page
-    const itemsPerPage = 20; // Maximum bookmarks per page
+    let currentPage: number = 1; // Start page
+    const itemsPerPage: number = 20; // Maximum bookmarks per page
 
     // Load bookmarks from localStorage on page load
     const loadBookmarks = () => {
