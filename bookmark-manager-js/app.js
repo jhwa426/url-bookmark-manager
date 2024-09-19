@@ -108,8 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Check if newUrl is in the list and validate URL
         if (newUrl && validateURL(newUrl)) {
-            // Update new URL that edited
-            urlBookmarks[urlIndex] = newUrl;
+            urlBookmarks[urlIndex] = newUrl; // Update new URL that edited
             saveBookmarks();
             renderUrlBookmarks();
         } else if (!validateURL(newUrl)) {
@@ -123,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBookmarks(); // Save the updated list to localStorage
         renderUrlBookmarks();
     };
+
+
+
+    // addEventListener area
 
     // Handle URL submission
     bookmarkForm.addEventListener('submit', (event) => {
