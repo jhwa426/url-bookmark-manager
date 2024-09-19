@@ -7,7 +7,7 @@
     "start": "tsc --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jeff Hwang",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.6.2"
