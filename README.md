@@ -4,7 +4,9 @@
 The aim of the URL Bookmark Manager application is to save URLs to local storage without connecting to a database. The URLs persist when the page is reloaded, and users can edit and delete them. Additionally, users can delete all URLs with the clear button.
 </p>
 
-## [URL Bookmark Manager](https://url-bookmark-manager.netlify.app/)
+## [URL Bookmark Manager](https://url-bookmark-manager.netlify.app/) - JavaScript
+
+## [URL Bookmark Manager](https://url-bookmark-manager-ts.netlify.app/) - TypeScript
 
 ### Features
 
