@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load bookmarks from localStorage on page load
     const loadBookmarks = () => {
-        const storedBookmarks = localStorage.getItem('urlBookmarks');
+        const storedBookmarks = localStorage.getItem('urlBookmarks'); // "urlBookmarks" as a unique identifier (key) in the browser's localStorage
         if (storedBookmarks) {
             urlBookmarks = JSON.parse(storedBookmarks);
         }
@@ -54,9 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderUrlBookmarks = () => {
         bookmarkList.innerHTML = ''; // Default
 
+        // Calculate Pagination index
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
-        const paginatedBookmarks = urlBookmarks.slice(start, end);
+        const paginatedBookmarks = urlBookmarks.slice(start, end); // Bring the first 20 bookmarks per pagination
 
         // Use map to create an array of list items
         const bookmarkItems = paginatedBookmarks.map((url, index) => {
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="${url}" target="_blank">${url}</a>
                 <button class="edit-btn" data-index="${start + index}"><i class="fa-solid fa-pen-to-square"></i></button>
                 <button class="delete-btn" data-index="${start + index}"><i class="fa-solid fa-delete-left"></i></button>
-            `;
+            `; // data-index - stores the index of each bookmark relative to the entire list of bookmarks. It ensures the index reflects the correct position of the bookmark in the full list, even when paginated. (an individual item within a list or array)
 
             return listItem;
         });
@@ -78,19 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render pagination when clicking the page
     const renderPagination = () => {
         pagination.innerHTML = '';
-        const totalPages = Math.ceil(urlBookmarks.length / itemsPerPage);
+        const totalPages = Math.ceil(urlBookmarks.length / itemsPerPage); // Rounds up to the nearest whole number, ensuring 20 bookmarks per page
 
         if (totalPages > 1) {
             if (currentPage > 1) { // Render previous page button if not on the first page
-                pagination.innerHTML += `<button data-page="${currentPage - 1}"><</button>`;
-            }
+                pagination.innerHTML += `<button data-page="${currentPage - 1}">&lt</button>`;
+            } // data-page - stores the page number for pagination
 
             for (let i = 1; i <= totalPages; i++) { // Render buttons for all pages
                 pagination.innerHTML += `<button data-page="${i}">${i}</button>`;
             }
 
             if (currentPage < totalPages) { // Render next page button if not on the last page
-                pagination.innerHTML += `<button data-page="${currentPage + 1}">></button>`;
+                pagination.innerHTML += `<button data-page="${currentPage + 1}">&gt</button>`;
             }
         }
     };
@@ -136,10 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
             urlBookmarks.push(submittedUrl);
             saveBookmarks(); // Save the urlBookmarks list to localStorage
             bookmarkUrl.value = ''; // Reset the URL input to blank
-            renderUrlBookmarks();
+            renderUrlBookmarks(); // Render all bookmarks in the bookmark list
             errorMessageHandler(); // Hide error message if the URL is valid
-            showResultsPage(submittedUrl); // Render the results page
+            showResultsPage(submittedUrl); // Render the Submitted URL to the results page
         } else {
+            // if is invalidate URL, occur error message
             errorMessage.textContent = 'Please enter a valid URL.';
             errorMessage.style.display = 'block';
             errorMessage.classList.remove('hidden');
@@ -149,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle resetting all bookmarks
     bookmarkReset.addEventListener('click', () => {
         if (confirm('Are you sure you want to reset the list?')) {
-            urlBookmarks = [];
+            urlBookmarks = []; // localStorage.removeItem("urlBookmarks");
             saveBookmarks(); // Save the updated urlBookmarks to localStorage
             renderUrlBookmarks(); // Rerender the list to show it has been reset
         }
@@ -172,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listener to use editUrlBookmark and deleteUrlBookmark
     bookmarkList.addEventListener('click', (event) => {
-        const editButton = event.target.closest('.edit-btn'); // Ensures that you're detecting the correct button even if an inner element (like an icon) is clicked.
+        const editButton = event.target.closest('.edit-btn'); // Ensures that detecting the correct button even if an inner element (like an icon) is clicked.
         const deleteButton = event.target.closest('.delete-btn');
 
         if (editButton) { // Edit URL handler
