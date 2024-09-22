@@ -131,15 +131,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle URL submission
     bookmarkForm.addEventListener('submit', (event) => {
         event.preventDefault(); // Prevent the form from submitting and refreshing the page
-        const submittedUrl = bookmarkUrl.value; // Submitted URL
+        const submittedUrl = bookmarkUrl.value.trim(); // Submitted URL
 
         if (validateURL(submittedUrl)) {
-            urlBookmarks.push(submittedUrl);
-            saveBookmarks(); // Save the urlBookmarks list to localStorage
-            bookmarkUrl.value = ''; // Reset the URL input to blank
-            renderUrlBookmarks(); // Render all bookmarks in the bookmark list
-            errorMessageHandler(); // Hide error message if the URL is valid
-            showResultsPage(submittedUrl); // Render the Submitted URL to the results page
+            if (!urlBookmarks.includes(submittedUrl)) {
+                urlBookmarks.push(submittedUrl);
+                saveBookmarks(); // Save the urlBookmarks list to localStorage
+                bookmarkUrl.value = ''; // Reset the URL input to blank
+                renderUrlBookmarks(); // Render all bookmarks in the bookmark list
+                errorMessageHandler(); // Hide error message if the URL is valid
+                showResultsPage(submittedUrl); // Render the Submitted URL to the results page
+            }
+            else {
+                // Show error message for duplicate URL
+                errorMessage.textContent = 'This URL has already been submitted.';
+                errorMessage.style.display = 'block';
+                errorMessage.classList.remove('hidden');
+            }
+
         } else {
             // if is invalidate URL, occur error message
             errorMessage.textContent = 'Please enter a valid URL.';
