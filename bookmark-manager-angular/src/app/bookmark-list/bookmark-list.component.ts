@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
     template: `
         <ul id="bookmark-list">
             <li *ngFor="let bookmark of paginatedBookmarks; let i = index">
-                <a [href]="bookmark" target="_blank">{{ bookmark }}</a>
+                <span class="bookmark-number">{{ i + 1 }}.</span>
+                <a [href]="bookmark" target="_blank" class="bookmark-url">{{ bookmark }}</a>
                 <button class="edit-btn" (click)="editBookmark(i)"><i class="fa-solid fa-pen-to-square"></i></button>
                 <button class="delete-btn" (click)="deleteBookmark(i)"><i class="fa-solid fa-delete-left"></i></button>
             </li>

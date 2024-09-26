@@ -143,6 +143,27 @@ li a {
     /* Background color for bookmarks */
 }
 
+/* Style for the bookmark number */
+.bookmark-number {
+    font-weight: bold;
+    color: var(--primary);
+    margin-right: 10px;
+    min-width: 30px;
+    text-align: right;
+    /* Ensures a consistent width for numbers */
+}
+
+/* Style for the URL */
+.bookmark-url {
+    flex-grow: 1;
+    text-decoration: none;
+    color: var(--text);
+    margin-left: 10px;
+    /* Ensure some space between the number and URL */
+    word-break: break-all;
+    /* Break long URLs if needed */
+}
+
 .pagination {
     display: flex;
     justify-content: center;
