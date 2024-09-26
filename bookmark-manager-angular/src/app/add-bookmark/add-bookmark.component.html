@@ -1,0 +1,10 @@
+<form (ngSubmit)="addBookmark()">
+    <input type="url" [(ngModel)]="bookmarkUrl" name="bookmarkUrl" placeholder="Enter bookmark URL" required>
+    <button type="submit" class="add-btn">
+        <i class="fas fa-bookmark"></i>
+    </button>
+    <button type="button" (click)="resetBookmarks()" class="reset-btn">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</form>
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
