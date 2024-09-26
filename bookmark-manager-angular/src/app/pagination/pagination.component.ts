@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BookmarkService } from '../bookmark.service';
 import { CommonModule } from '@angular/common';
 
@@ -19,6 +19,8 @@ export class PaginationComponent implements OnInit {
     currentPage: number = 1;
     totalPages: number[] = [];
 
+    @Output() pageChanged = new EventEmitter<number>();
+
     constructor(private bookmarkService: BookmarkService) { }
 
     ngOnInit() {
@@ -33,6 +35,6 @@ export class PaginationComponent implements OnInit {
     changePage(page: number) {
         this.currentPage = page;
         this.bookmarkService.changePage(page);
-        // Emit an event or use a service to refresh the bookmark list
+        this.pageChanged.emit(page);
     }
 }

@@ -5,10 +5,10 @@ import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-results',
     template: `
-        <div class="results-page">
-            <h2>Thank you for your submission!</h2>
-            <p>Your submitted URL: <a [href]="submittedUrl" target="_blank">{{ submittedUrl }}</a></p>
-            <a routerLink="/">Back to Overview</a>
+        <div id="results-page">
+            <h1>Thank you for your submission!</h1>
+            <p id="submitted-url">Your submitted URL: <a [href]="submittedUrl" target="_blank">{{ submittedUrl }}</a></p>
+            <a routerLink="/" id="back-to-overview">Back to Overview</a>
         </div>
     `,
     standalone: true,

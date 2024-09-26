@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
     selector: 'app-root',
     template: `
         <div class="container">
-            <h1>URL Bookmark Manager</h1>
             <router-outlet></router-outlet>
         </div>
     `,

@@ -7,6 +7,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
 @Component({
     selector: 'app-overview',
     template: `
+        <h1>URL Bookmark Manager</h1>
         <app-add-bookmark (bookmarkAdded)="goToResults($event)"></app-add-bookmark>
         <app-bookmark-list></app-bookmark-list>
         <app-pagination></app-pagination>

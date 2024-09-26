@@ -7,20 +7,20 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-add-bookmark',
     template: `
         <form (ngSubmit)="addBookmark()">
-        <input type="url" [(ngModel)]="bookmarkUrl" name="bookmarkUrl" placeholder="Enter bookmark URL" required>
-        <button type="submit" class="add-btn">
-            <i class="fas fa-bookmark"></i>
-        </button>
-        <button type="button" (click)="resetBookmarks()" class="reset-btn">
-            <i class="fa-solid fa-trash"></i>
-        </button>
-    </form>
+            <input type="url" [(ngModel)]="bookmarkUrl" name="bookmarkUrl" placeholder="Enter bookmark URL" required>
+            <button type="submit" class="add-btn">
+                <i class="fas fa-bookmark"></i>
+            </button>
+            <button type="button" (click)="resetBookmarks()" class="reset-btn">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </form>
 
-    <p *ngIf="errorMessage" id="error-message">{{ errorMessage }}</p>
+        <p *ngIf="errorMessage" id="error-message">{{ errorMessage }}</p>
     `,
     styleUrls: ['./add-bookmark.component.css'],
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, CommonModule],
 })
 
 
