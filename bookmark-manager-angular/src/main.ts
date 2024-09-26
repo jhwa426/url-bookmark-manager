@@ -4,11 +4,16 @@ import { importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { provideRouter } from '@angular/router';
-import { routes } from './app/app.routes';
+import { BookmarkService } from "./app/bookmark.service";
+import { routes } from "./app/app.routes";
+
+
 
 bootstrapApplication(AppComponent, {
     providers: [
+        provideRouter(routes),
         importProvidersFrom(BrowserModule, FormsModule),
-        provideRouter(routes)
+        BookmarkService
     ]
 }).catch(err => console.error(err));
+

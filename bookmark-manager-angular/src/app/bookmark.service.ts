@@ -65,4 +65,8 @@ export class BookmarkService {
         const regex = /^(https?:\/\/)?(www\.)?([a-zA-Z0-9-]{1,63}\.)+([a-zA-Z]{2,6})(:[0-9]{1,5})?(\/[^\s]*)?$/;
         return regex.test(url);
     }
+
+    isDuplicate(url: string): boolean {
+        return this.urlBookmarks.includes(url);
+    }
 }

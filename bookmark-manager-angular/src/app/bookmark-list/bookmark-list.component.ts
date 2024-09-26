@@ -4,7 +4,15 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-bookmark-list',
-    templateUrl: './bookmark-list.component.html',
+    template: `
+        <ul id="bookmark-list">
+            <li *ngFor="let bookmark of paginatedBookmarks; let i = index">
+                <a [href]="bookmark" target="_blank">{{ bookmark }}</a>
+                <button class="edit-btn" (click)="editBookmark(i)"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="delete-btn" (click)="deleteBookmark(i)"><i class="fa-solid fa-delete-left"></i></button>
+            </li>
+        </ul>
+    `,
     styleUrls: ['./bookmark-list.component.css'],
     standalone: true,
     imports: [CommonModule],

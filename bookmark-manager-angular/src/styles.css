@@ -157,8 +157,6 @@ li a {
     padding: 10px;
     border-radius: 4px;
     margin-top: 10px;
-    display: none;
-    /* Hidden by default */
     font-weight: bold;
 }
 
@@ -167,6 +165,7 @@ li a {
     /* Add a warning symbol before the message */
     font-size: 1.2em;
 }
+
 
 .hidden {
     display: none;

@@ -4,7 +4,13 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-pagination',
-    templateUrl: './pagination.component.html',
+    template: `
+    <div class="pagination">
+        <button *ngIf="currentPage > 1" (click)="changePage(currentPage - 1)">&lt;</button>
+        <button *ngFor="let page of totalPages" (click)="changePage(page)">{{ page }}</button>
+        <button *ngIf="currentPage < totalPages.length" (click)="changePage(currentPage + 1)">&gt;</button>
+    </div>
+    `,
     styleUrls: ['./pagination.component.css'],
     standalone: true,
     imports: [CommonModule],

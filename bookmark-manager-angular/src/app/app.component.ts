@@ -1,25 +1,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
-import { AddBookmarkComponent } from "./add-bookmark/add-bookmark.component";
-import { BookmarkListComponent } from "./bookmark-list/bookmark-list.component";
-import { PaginationComponent } from "./pagination/pagination.component";
+
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
+    template: `
+        <div class="container">
+            <h1>URL Bookmark Manager</h1>
+            <router-outlet></router-outlet>
+        </div>
+    `,
     styleUrls: ['./app.component.css'],
     standalone: true,
-    imports: [RouterModule, AddBookmarkComponent, BookmarkListComponent, PaginationComponent]
+    imports: [RouterModule]
 })
 
 
 export class AppComponent {
     title = 'url-bookmark-manager';
-
-    constructor(private router: Router) { }
-
-    goToResults(bookmarkUrl: string) {
-        this.router.navigate(['/results'], { queryParams: { url: bookmarkUrl } });
-    }
 }

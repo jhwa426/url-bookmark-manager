@@ -5,11 +5,25 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-add-bookmark',
-    templateUrl: './add-bookmark.component.html',
+    template: `
+        <form (ngSubmit)="addBookmark()">
+        <input type="url" [(ngModel)]="bookmarkUrl" name="bookmarkUrl" placeholder="Enter bookmark URL" required>
+        <button type="submit" class="add-btn">
+            <i class="fas fa-bookmark"></i>
+        </button>
+        <button type="button" (click)="resetBookmarks()" class="reset-btn">
+            <i class="fa-solid fa-trash"></i>
+        </button>
+    </form>
+
+    <p *ngIf="errorMessage" id="error-message">{{ errorMessage }}</p>
+    `,
     styleUrls: ['./add-bookmark.component.css'],
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [FormsModule],
 })
+
+
 export class AddBookmarkComponent {
     bookmarkUrl: string = '';
     errorMessage: string = '';
@@ -19,10 +33,14 @@ export class AddBookmarkComponent {
 
     addBookmark() {
         if (this.bookmarkService.validateURL(this.bookmarkUrl)) {
-            this.bookmarkService.addBookmark(this.bookmarkUrl);
-            this.bookmarkAdded.emit(this.bookmarkUrl);
-            this.bookmarkUrl = '';
-            this.errorMessage = '';
+            if (!this.bookmarkService.isDuplicate(this.bookmarkUrl)) {
+                this.bookmarkService.addBookmark(this.bookmarkUrl);
+                this.bookmarkAdded.emit(this.bookmarkUrl);
+                this.bookmarkUrl = '';
+                this.errorMessage = '';
+            } else {
+                this.errorMessage = 'This URL has already been submitted.';
+            }
         } else {
             this.errorMessage = 'Please enter a valid URL.';
         }
