@@ -8,6 +8,8 @@ The aim of the URL Bookmark Manager application is to save URLs to local storage
 
 ## [URL Bookmark Manager](https://url-bookmark-manager-ts.netlify.app/) - TypeScript
 
+## [URL Bookmark Manager](https://url-bookmark-manager-ng.netlify.app/) - Angular
+
 ### Features
 
 #### Overview Page
@@ -44,18 +46,31 @@ Navigation Link: The button is provided to navigate back to the Overview Page.
 
 ## Technical Skills 💻
 
-<img align="left" alt="Technical Skills" height="50px" src="https://skillicons.dev/icons?i=html,css,js,ts,git,netlify"/>
+<img align="left" alt="Technical Skills" height="50px" src="https://skillicons.dev/icons?i=html,css,js,ts,angular,git,netlify"/>
 
 <br />
 <br />
 <br />
 <br />
+
+### Installation Angular
+
+<details>
+To run this application locally, follow these steps:
+
+1. Clone the repository: `git clone https://https://github.com/jhwa426/url-bookmark-manager/`
+2. Navigate to the project directory: `cd bookmark-manager-angular`
+3. Install the dependencies: `npm install`
+4. Start the development server: `ng serve`
+5. This will start the application on `http://localhost:4200/`. Open your web browser and navigate to this address to view the app.
+
+</details>
 
 ### Installation TypeScript
 
 <details>
 
-To run this portfolio locally, follow these steps:
+To run this application locally, follow these steps:
 
 1. Clone the repository: `git clone https://https://github.com/jhwa426/url-bookmark-manager`
 2. Navigate to the project directory: `cd bookmark-manager-ts`
