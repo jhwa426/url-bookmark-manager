@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { BookmarkService } from '../bookmark.service';
 import { CommonModule } from '@angular/common';
 
@@ -18,12 +18,20 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
 })
-export class BookmarkListComponent implements OnInit {
+
+
+export class BookmarkListComponent implements OnInit, OnChanges {
+    @Input() currentPage: number = 1;
     paginatedBookmarks: string[] = [];
+
 
     constructor(private bookmarkService: BookmarkService) { }
 
     ngOnInit() {
+        this.refreshBookmarks();
+    }
+
+    ngOnChanges() {
         this.refreshBookmarks();
     }
 
@@ -32,17 +40,27 @@ export class BookmarkListComponent implements OnInit {
     }
 
     editBookmark(index: number) {
+        const globalIndex = (this.currentPage - 1) * this.bookmarkService.itemsPerPage + index;
         const newUrl = prompt('Enter new URL:', this.paginatedBookmarks[index]);
-        if (newUrl && this.bookmarkService.validateURL(newUrl)) {
-            this.bookmarkService.editBookmark(index, newUrl);
-            this.refreshBookmarks();
+
+        if (newUrl) {
+            // Attempt to edit the bookmark and check the result
+            const validUrl = this.bookmarkService.editBookmark(globalIndex, newUrl);
+
+            if (validUrl) {
+                this.refreshBookmarks();  // Refresh the list only if the edit was successful
+            } else {
+                alert('This URL is already in the bookmark list or is invalid. Please enter a different URL.');
+            }
         } else {
             alert('Please enter a valid URL.');
         }
     }
 
     deleteBookmark(index: number) {
-        this.bookmarkService.deleteBookmark(index);
+        const globalIndex = (this.currentPage - 1) * this.bookmarkService.itemsPerPage + index;
+        this.bookmarkService.deleteBookmark(globalIndex);
         this.refreshBookmarks();
     }
+
 }

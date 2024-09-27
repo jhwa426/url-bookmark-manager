@@ -27,7 +27,10 @@ import { FormsModule } from '@angular/forms';
 export class AddBookmarkComponent {
     bookmarkUrl: string = '';
     errorMessage: string = '';
+
     @Output() bookmarkAdded = new EventEmitter<string>();
+    @Output() bookmarksReset = new EventEmitter<void>();  // Emit reset event
+    router: any;
 
     constructor(private bookmarkService: BookmarkService) { }
 
@@ -49,6 +52,7 @@ export class AddBookmarkComponent {
     resetBookmarks() {
         if (confirm('Are you sure you want to reset the list?')) {
             this.bookmarkService.resetBookmarks();
+            this.bookmarksReset.emit();  // Emit reset event
         }
     }
 }
