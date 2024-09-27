@@ -37,6 +37,7 @@ export class PaginationComponent implements OnInit {
             this.currentPage = page;
             this.bookmarkService.changePage(page);  // Update the current page in the service
             this.pageChanged.emit(page);  // Emit the page change event to notify other components
+            this.updateTotalPages();  // Refresh the total pages
         }
     }
 }
