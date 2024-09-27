@@ -25,15 +25,15 @@ import { FormsModule } from '@angular/forms';
 
 
 export class AddBookmarkComponent {
-    bookmarkUrl: string = '';
-    errorMessage: string = '';
+    bookmarkUrl: string = ''; // A string property to store the URL entered by the user.
+    errorMessage: string = ''; // A string property to display error messages related to URL validation and duplication
 
-    @Output() bookmarkAdded = new EventEmitter<string>();
-    @Output() bookmarksReset = new EventEmitter<void>();  // Emit reset event
-    router: any;
+    @Output() bookmarkAdded = new EventEmitter<string>(); // An EventEmitter that emits the added bookmark URL to the parent component.
+    @Output() bookmarksReset = new EventEmitter<void>();  // An EventEmitter that emits an event to reset the bookmarks in the parent component.
 
     constructor(private bookmarkService: BookmarkService) { }
 
+    // Add url to the bookmark list 
     addBookmark() {
         if (this.bookmarkService.validateURL(this.bookmarkUrl)) {
             if (!this.bookmarkService.isDuplicate(this.bookmarkUrl)) {

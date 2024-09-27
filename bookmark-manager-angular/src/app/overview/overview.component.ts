@@ -21,14 +21,17 @@ export class OverviewComponent {
 
     constructor(private router: Router) { }
 
+    // Navigates to the results page with the specified bookmark URL.
     goToResults(bookmarkUrl: string) {
         this.router.navigate(['/results'], { queryParams: { url: bookmarkUrl } });
     }
 
+    // Updates the currentPage property based on the selected page.
     onPageChanged(page: number) {
         this.currentPage = page;
     }
 
+    // Logs a message to the console and reloads the page to reset the bookmarks.
     onBookmarksReset() {
         console.log('Bookmarks have been reset.');
 

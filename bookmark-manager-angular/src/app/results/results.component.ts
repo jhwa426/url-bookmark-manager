@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule, RouterModule]
 })
+
+
 export class ResultsComponent implements OnInit {
     submittedUrl: string | null = null;
 
@@ -22,7 +24,6 @@ export class ResultsComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(params => {
             this.submittedUrl = params['url'];
-            console.log("Received URL: ", this.submittedUrl);
         });
     }
 }

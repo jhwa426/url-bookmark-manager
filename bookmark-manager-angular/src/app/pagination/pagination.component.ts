@@ -15,9 +15,11 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
 })
+
+
 export class PaginationComponent implements OnInit {
-    currentPage: number = 1;
-    totalPages: number[] = [];
+    currentPage: number = 1; // A number property that stores the current page number.
+    totalPages: number[] = []; // An array that holds the total number of pages.
 
     @Output() pageChanged = new EventEmitter<number>();
 
