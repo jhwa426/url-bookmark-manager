@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class BookmarkService {
     private urlBookmarks: string[] = [];
-    private itemsPerPage: number = 20;
+    public itemsPerPage: number = 20;
     private currentPage: number = 1;
 
     constructor() {
@@ -51,9 +51,21 @@ export class BookmarkService {
         this.currentPage = page;
     }
 
-    editBookmark(index: number, newUrl: string) {
+    editBookmark(index: number, newUrl: string): boolean {
+        // Validate the new URL
+        if (!this.validateURL(newUrl)) {
+            return false;  // Indicate failure due to invalid URL
+        }
+
+        // Check for duplicates, excluding the current index
+        if (this.isDuplicate(newUrl) && this.urlBookmarks[index] !== newUrl) {
+            return false;  // Indicate failure due to duplicate URL
+        }
+
+        // If the URL is valid and not a duplicate, update the bookmark
         this.urlBookmarks[index] = newUrl;
         this.saveBookmarks();
+        return true;  // Indicate success
     }
 
     deleteBookmark(index: number) {
