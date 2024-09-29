@@ -20,16 +20,11 @@ import { CommonModule } from '@angular/common';
 })
 
 
-export class BookmarkListComponent implements OnInit, OnChanges {
+export class BookmarkListComponent implements OnChanges {
     @Input() currentPage: number = 1; // An input property that stores the current page number for pagination.
     paginatedBookmarks: string[] = []; //  An array that holds the bookmarks to be displayed on the current page.
 
-
     constructor(private bookmarkService: BookmarkService) { }
-
-    ngOnInit() {
-        this.refreshBookmarks();
-    }
 
     ngOnChanges() {
         this.refreshBookmarks();
